@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright (C) 2020. Niklas Linz - All Rights Reserved
+  ~ You may use, distribute and modify this code under the
+  ~ terms of the LGPLv3 license, which unfortunately won't be
+  ~ written for another century.
+  ~
+  ~ You should have received a copy of the LGPLv3 license with
+  ~ this file. If not, please write to: niklas.linz@enigmar.de
+  ~
+  -->
+
+<configuration>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{HH:mm:ss} %-5level[%logger{0}] %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <logger name="net.dv8tion" level="INFO"/>
+
+
+    <root level="debug">
+        <appender-ref ref="STDOUT"/>
+    </root>
+</configuration>
