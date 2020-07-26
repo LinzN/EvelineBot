@@ -12,6 +12,7 @@
 package de.linzn.evelineBot.audio;
 
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import de.linzn.evelineBot.utils.YouTubeHelper;
 import net.dv8tion.jda.api.entities.Member;
 
 public class AudioInfo {
@@ -26,6 +27,10 @@ public class AudioInfo {
 
     public AudioTrack getTrack() {
         return track;
+    }
+
+    public String getYoutubeID() {
+        return new YouTubeHelper().extractVideoIdFromUrl(this.track.getInfo().uri);
     }
 
 

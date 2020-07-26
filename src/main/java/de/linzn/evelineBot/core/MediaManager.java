@@ -141,7 +141,7 @@ public class MediaManager {
             messageEmbedTop.addField("Volume", this.getPlayer().getVolume() + " %", true);
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.GREEN);
-            messageEmbedTop.setImage("https://i.pinimg.com/originals/77/a5/ea/77a5ea75cb835bd34165be7a0e437326.jpg");
+            messageEmbedTop.setImage("https://i.pinimg.com/originals/e9/f8/66/e9f866fd4ee4614b6934f1f95884ec7a.png");
             EvelineBot.getInstance().getJda().getPresence().setActivity(Activity.playing("Nichts :("));
         } else {
             messageEmbedTop.setTitle("EVELINE Bot");
@@ -149,7 +149,7 @@ public class MediaManager {
             messageEmbedTop.addField("Volume", this.getPlayer().getVolume() + " %", true);
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.GREEN);
-            messageEmbedTop.setImage("https://i.pinimg.com/originals/77/a5/ea/77a5ea75cb835bd34165be7a0e437326.jpg");
+            messageEmbedTop.setImage("https://img.youtube.com/vi/" + this.getTrackManager().currentPlaying.getYoutubeID() + "/hqdefault.jpg");
             String nickname = this.getTrackManager().currentPlaying.getAuthor().getNickname();
             if (nickname == null) {
                 nickname = this.getTrackManager().currentPlaying.getAuthor().getEffectiveName();
