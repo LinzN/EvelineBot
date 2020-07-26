@@ -142,6 +142,7 @@ public class MediaManager {
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.GREEN);
             messageEmbedTop.setImage("https://i.pinimg.com/originals/e9/f8/66/e9f866fd4ee4614b6934f1f95884ec7a.png");
+            messageEmbedTop.setFooter("Powered by STEM-SYSTEM", null);
             EvelineBot.getInstance().getJda().getPresence().setActivity(Activity.playing("Nichts :("));
         } else {
             messageEmbedTop.setTitle("EVELINE Bot");
