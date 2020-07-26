@@ -31,11 +31,18 @@ public class SetupListener extends ListenerAdapter {
         if (!e.getAuthor().isBot()) {
             return;
         }
-        if (e.getMessage().getContentRaw().startsWith("TOP_INFO")) {
+        if (e.getMessage().getEmbeds().size() >= 1) {
+            if (e.getMessage().getEmbeds().get(0).getTitle().startsWith("TOP_INFO")) {
+                mediaManager.setTop_id(e.getMessageId());
+                LOG.info("Setup TOP_INFO ID: " + e.getMessageId());
+                mediaManager.updateInterface_TOP();
+            }
+        }
+       /* if (e.getMessage().getContentRaw().startsWith("TOP_INFO")) {
             mediaManager.setTop_id(e.getMessageId());
             LOG.info("Setup TOP_INFO ID: " + e.getMessageId());
             mediaManager.updateInterface_TOP();
-        }
+        }*/
 
         if (e.getMessage().getContentRaw().startsWith("QUEUE_INFO")) {
             mediaManager.setQueue_id(e.getMessageId());

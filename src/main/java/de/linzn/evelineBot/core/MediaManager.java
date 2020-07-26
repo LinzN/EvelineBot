@@ -61,7 +61,8 @@ public class MediaManager {
         player = new Pair<>(nPlayer, manager);
         this.clearHistory();
         if (this.top_id == null) {
-            textChannel.sendMessage("TOP_INFO").queue(null, null);
+            //textChannel.sendMessage("TOP_INFO").queue(null, null);
+            textChannel.sendMessage(new EmbedBuilder().setTitle("TOP_INFO").build()).queue();
         }
 
         if (this.queue_id == null) {
@@ -157,7 +158,6 @@ public class MediaManager {
             evelineBot.getJda().getPresence().setActivity(Activity.playing(this.getTrackManager().currentPlaying.getTrack().getInfo().title));
 
         }
-
 
         textChannel.editMessageById(this.top_id, messageEmbedTop.build()).queue(message -> {
             message.addReaction("U+23EF").queue();
