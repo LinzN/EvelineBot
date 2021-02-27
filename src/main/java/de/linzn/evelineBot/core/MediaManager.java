@@ -136,26 +136,26 @@ public class MediaManager {
         EmbedBuilder messageEmbedTop = new EmbedBuilder();
 
         if (this.getPlayer().getPlayingTrack() == null) {
-            messageEmbedTop.setTitle("EVELINE Bot");
+            messageEmbedTop.setTitle("EVELINE Music");
             messageEmbedTop.addField("Playing", "No Tracks playing at the moment!", true);
             messageEmbedTop.addField("Volume", this.getPlayer().getVolume() + " %", true);
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.GREEN);
-            messageEmbedTop.setImage("https://i.pinimg.com/originals/e9/f8/66/e9f866fd4ee4614b6934f1f95884ec7a.png");
+            messageEmbedTop.setImage("https://i.pinimg.com/originals/96/e8/7d/96e87de444de56b2c0f7fe8ccb6530fc.jpg");
             messageEmbedTop.setFooter("Powered by STEM-SYSTEM", null);
             EvelineBot.getInstance().getJda().getPresence().setActivity(Activity.playing("Nichts :("));
         } else {
-            messageEmbedTop.setTitle("EVELINE Bot");
+            messageEmbedTop.setTitle("EVELINE Music");
             messageEmbedTop.addField("Playing", this.getTrackManager().currentPlaying.getTrack().getInfo().title, true);
             messageEmbedTop.addField("Volume", this.getPlayer().getVolume() + " %", true);
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
-            messageEmbedTop.setColor(Color.GREEN);
+            messageEmbedTop.setColor(Color.BLUE);
             messageEmbedTop.setImage("https://img.youtube.com/vi/" + this.getTrackManager().currentPlaying.getYoutubeID() + "/hqdefault.jpg");
             String nickname = this.getTrackManager().currentPlaying.getAuthor().getNickname();
             if (nickname == null) {
                 nickname = this.getTrackManager().currentPlaying.getAuthor().getEffectiveName();
             }
-            messageEmbedTop.setFooter("Request von: " + nickname, null);
+            messageEmbedTop.setFooter("Request from: " + nickname, null);
             evelineBot.getJda().getPresence().setActivity(Activity.playing(this.getTrackManager().currentPlaying.getTrack().getInfo().title));
 
         }
@@ -176,7 +176,7 @@ public class MediaManager {
         Message messageQueue;
 
         if (getTrackManager().getQueuedTracks().isEmpty()) {
-            messageQueue = new MessageBuilder("Queue list: \n" + "Keine Tracks in der Queue!").build();
+            messageQueue = new MessageBuilder("Queue list: \n" + "The queue is empty!").build();
         } else {
             StringBuilder sb = new StringBuilder();
             Set<AudioInfo> queue = getTrackManager().getQueuedTracks();
@@ -186,7 +186,7 @@ public class MediaManager {
             if (sb.length() <= 1930) {
                 messageQueue = new MessageBuilder("Queue list: \n" + "**>** " + sb.toString()).build();
             } else {
-                messageQueue = new MessageBuilder("Queue list: \n" + "**>** " + sb.toString().substring(0, 1930) + "...").build();
+                messageQueue = new MessageBuilder("Queue list: \n" + "**>** " + sb.substring(0, 1930) + "...").build();
             }
         }
         textChannel.editMessageById(this.queue_id, messageQueue).queue();
