@@ -61,7 +61,6 @@ public class MediaManager {
         player = new Pair<>(nPlayer, manager);
         this.clearHistory();
         if (this.top_id == null) {
-            //textChannel.sendMessage("TOP_INFO").queue(null, null);
             textChannel.sendMessage(new EmbedBuilder().setTitle("TOP_INFO").build()).queue();
         }
 
