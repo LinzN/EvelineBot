@@ -11,6 +11,8 @@
 
 package de.linzn.evelineBot.utils;
 
+import de.linzn.evelineBot.EvelineBot;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.Properties;
@@ -27,7 +29,7 @@ public class JavaUtils {
             try {
                 props.load(Thread.currentThread().getContextClassLoader().getResourceAsStream(res));
             } catch (IOException e) {
-                e.printStackTrace();
+                EvelineBot.LOGGER.ERROR(e);
             }
             version = props.getProperty("version");
         }

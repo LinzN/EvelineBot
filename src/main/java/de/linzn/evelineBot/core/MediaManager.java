@@ -30,8 +30,6 @@ import net.dv8tion.jda.api.entities.*;
 import java.awt.*;
 import java.util.Set;
 
-import static net.dv8tion.jda.internal.JDAImpl.LOG;
-
 public class MediaManager {
 
     private final EvelineBot evelineBot;
@@ -131,7 +129,7 @@ public class MediaManager {
     }
 
     public void updateInterface_TOP() {
-        LOG.info("UPDATE_INTERFACE_TOP");
+        EvelineBot.LOGGER.INFO("UPDATE_INTERFACE_TOP");
         EmbedBuilder messageEmbedTop = new EmbedBuilder();
 
         if (this.getPlayer().getPlayingTrack() == null) {
@@ -149,7 +147,7 @@ public class MediaManager {
             messageEmbedTop.addField("Volume", this.getPlayer().getVolume() + " %", true);
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.BLUE);
-            messageEmbedTop.setImage("https://img.youtube.com/vi/" + this.getTrackManager().currentPlaying.getYoutubeID() + "/hqdefault.jpg");
+            messageEmbedTop.setImage(this.getTrackManager().currentPlaying.getImageURL());
             String nickname = this.getTrackManager().currentPlaying.getAuthor().getNickname();
             if (nickname == null) {
                 nickname = this.getTrackManager().currentPlaying.getAuthor().getEffectiveName();
@@ -171,7 +169,7 @@ public class MediaManager {
     }
 
     public void updateInterface_QUEUE() {
-        LOG.info("UPDATE_INTERFACE_QUEUE");
+        EvelineBot.LOGGER.INFO("UPDATE_INTERFACE_QUEUE");
         Message messageQueue;
 
         if (getTrackManager().getQueuedTracks().isEmpty()) {

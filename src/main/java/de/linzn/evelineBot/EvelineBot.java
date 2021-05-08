@@ -17,14 +17,20 @@ import de.linzn.evelineBot.listener.ReactionListener;
 import de.linzn.evelineBot.listener.SetupListener;
 import de.linzn.evelineBot.utils.JavaUtils;
 import de.linzn.simplyConfiguration.FileConfiguration;
+import de.linzn.simplyLogger.LogSystem;
+import de.linzn.simplyLogger.Logger;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import net.dv8tion.jda.api.utils.Compression;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 import java.util.concurrent.Executors;
 
 public class EvelineBot {
+    public static Logger LOGGER;
+    public static LogSystem logSystem;
+
     private static EvelineBot evelineBot;
     private static String version;
 
@@ -53,11 +59,14 @@ public class EvelineBot {
             this.jda.awaitReady();
             this.mediaManager.setupManager();
         } catch (LoginException | InterruptedException e) {
-            e.printStackTrace();
+            EvelineBot.LOGGER.ERROR(e);
         }
     }
 
     public static void main(String[] args) {
+        logSystem = new LogSystem("Eveline");
+        logSystem.setFileLogger(new File("logs"));
+        LOGGER = logSystem.getLogger();
         new EvelineBot();
     }
 

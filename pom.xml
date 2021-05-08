@@ -138,5 +138,17 @@
             <artifactId>simplyConfiguration</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.manevolent</groupId>
+            <artifactId>ts3j</artifactId>
+            <version>1.0.2</version>
+        </dependency>
+        <dependency>
+            <groupId>de.linzn</groupId>
+            <artifactId>simplyLogger</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+            <type>jar</type>
+        </dependency>
     </dependencies>
 </project>

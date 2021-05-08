@@ -12,11 +12,10 @@
 package de.linzn.evelineBot.listener;
 
 
+import de.linzn.evelineBot.EvelineBot;
 import de.linzn.evelineBot.core.MediaManager;
 import net.dv8tion.jda.api.events.message.guild.react.GuildMessageReactionAddEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
-
-import static net.dv8tion.jda.internal.JDAImpl.LOG;
 
 public class ReactionListener extends ListenerAdapter {
 
@@ -36,20 +35,20 @@ public class ReactionListener extends ListenerAdapter {
         if (event.getChannel().equals(mediaManager.getTextChannel())) {
             if (event.getMessageId().equalsIgnoreCase(mediaManager.getTop_id())) {
                 if (event.getReactionEmote().getAsCodepoints().equalsIgnoreCase("U+23EF")) {
-                    LOG.info("ResumePause Reaction");
+                    EvelineBot.LOGGER.INFO("ResumePause Reaction");
                     mediaManager.resumePause();
                 } else if (event.getReactionEmote().getAsCodepoints().equalsIgnoreCase("U+23F9")) {
                     mediaManager.stop();
-                    LOG.info("Stop Reaction");
+                    EvelineBot.LOGGER.INFO("Stop Reaction");
                 } else if (event.getReactionEmote().getAsCodepoints().equalsIgnoreCase("U+23ED")) {
                     mediaManager.nextTrack();
-                    LOG.info("Next Reaction");
+                    EvelineBot.LOGGER.INFO("Next Reaction");
                 } else if (event.getReactionEmote().getAsCodepoints().equalsIgnoreCase("U+1F500")) {
                     mediaManager.shuffle();
-                    LOG.info("Shuffle Reaction");
+                    EvelineBot.LOGGER.INFO("Shuffle Reaction");
                 } else if (event.getReactionEmote().getAsCodepoints().equalsIgnoreCase("U+2620")) {
                     mediaManager.reset();
-                    LOG.info("Kill Reaction");
+                    EvelineBot.LOGGER.INFO("Kill Reaction");
                 }
             }
         }

@@ -9,7 +9,7 @@
  *
  */
 
-package de.linzn.evelineBot.utils;
+package de.linzn.evelineBot.utils.helper;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -23,8 +23,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import static net.dv8tion.jda.internal.JDAImpl.LOG;
-
 public class CommandHandler extends ListenerAdapter {
 
     private final Map<String, ICMD> commandList;
@@ -61,7 +59,7 @@ public class CommandHandler extends ListenerAdapter {
                 String[] args = Arrays.copyOfRange(inputArray, 1, inputArray.length);
 
                 if (this.commandList.containsKey(command.toLowerCase())) {
-                    LOG.info("Run command " + command);
+                    EvelineBot.LOGGER.INFO("Run command " + command);
                     this.commandList.get(command).process(args, new MessageSender(e));
                 }
             }

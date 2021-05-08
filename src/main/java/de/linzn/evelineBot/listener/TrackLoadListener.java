@@ -15,10 +15,9 @@ import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import de.linzn.evelineBot.EvelineBot;
 import de.linzn.evelineBot.core.MediaManager;
 import net.dv8tion.jda.api.entities.Member;
-
-import static net.dv8tion.jda.internal.JDAImpl.LOG;
 
 public class TrackLoadListener implements AudioLoadResultHandler {
 
@@ -39,7 +38,7 @@ public class TrackLoadListener implements AudioLoadResultHandler {
 
     @Override
     public void playlistLoaded(AudioPlaylist playlist) {
-        LOG.info("Loading playlist with " + playlist.getTracks().size() + " entries");
+        EvelineBot.LOGGER.INFO("Loading playlist with " + playlist.getTracks().size() + " entries");
         if (playlist.getSelectedTrack() != null) {
             trackLoaded(playlist.getSelectedTrack());
         } else if (playlist.isSearchResult()) {
@@ -54,11 +53,11 @@ public class TrackLoadListener implements AudioLoadResultHandler {
 
     @Override
     public void noMatches() {
-        LOG.info("No track found!");
+        EvelineBot.LOGGER.WARNING("No track found!");
     }
 
     @Override
     public void loadFailed(FriendlyException exception) {
-        LOG.info("ERROR while loading track with exception " + exception.getLocalizedMessage());
+        EvelineBot.LOGGER.ERROR("ERROR while loading track with exception " + exception.getLocalizedMessage());
     }
 }
