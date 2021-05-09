@@ -58,6 +58,6 @@ public class TrackLoadListener implements AudioLoadResultHandler {
 
     @Override
     public void loadFailed(FriendlyException exception) {
-        EvelineBot.LOGGER.ERROR("ERROR while loading track with exception " + exception.getLocalizedMessage());
+        EvelineBot.LOGGER.ERROR("ERROR while loading track with exception " + exception);
     }
 }
