@@ -47,8 +47,9 @@ public class ReactionListener extends ListenerAdapter {
                     mediaManager.shuffle();
                     EvelineBot.LOGGER.INFO("Shuffle Reaction");
                 } else if (event.getReactionEmote().getAsCodepoints().equalsIgnoreCase("U+2620")) {
-                    mediaManager.reset();
+                    //mediaManager.reset();
                     EvelineBot.LOGGER.INFO("Kill Reaction");
+                    System.exit(0);
                 }
             }
         }
