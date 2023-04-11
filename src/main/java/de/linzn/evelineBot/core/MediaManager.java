@@ -28,6 +28,7 @@ import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.*;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Set;
 
 public class MediaManager {
@@ -112,7 +113,11 @@ public class MediaManager {
 
 
     private void clearHistory() {
-        textChannel.deleteMessages(textChannel.getHistory().retrievePast(100).complete()).queue();
+        MessageHistory history = MessageHistory.getHistoryFromBeginning(textChannel).complete();
+        List<Message> mess = history.getRetrievedHistory();
+        for(Message m: mess){
+            m.delete().queue();
+        }
         top_id = null;
         queue_id = null;
     }
