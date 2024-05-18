@@ -23,6 +23,11 @@ import de.linzn.evelineBot.listener.TrackLoadListener;
 import de.linzn.evelineBot.utils.InterfaceBuilder;
 import de.linzn.evelineBot.utils.MessageSender;
 import de.linzn.openJL.pairs.Pair;
+import dev.lavalink.youtube.YoutubeAudioSourceManager;
+import dev.lavalink.youtube.clients.AndroidWithThumbnail;
+import dev.lavalink.youtube.clients.MusicWithThumbnail;
+import dev.lavalink.youtube.clients.WebWithThumbnail;
+import dev.lavalink.youtube.clients.skeleton.Client;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.*;
@@ -35,6 +40,7 @@ public class MediaManager {
 
     private final EvelineBot evelineBot;
     private final AudioPlayerManager myManager = new DefaultAudioPlayerManager();
+
     private Guild guild;
     private VoiceChannel voiceChannel;
     private TextChannel textChannel;
@@ -45,6 +51,8 @@ public class MediaManager {
 
     public MediaManager(EvelineBot evelineBot) {
         this.evelineBot = evelineBot;
+        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(/*allowSearch:*/ true, new MusicWithThumbnail(), new WebWithThumbnail(), new AndroidWithThumbnail());
+        myManager.registerSourceManager(youtube);
         AudioSourceManagers.registerRemoteSources(myManager);
     }
 
@@ -143,8 +151,8 @@ public class MediaManager {
             messageEmbedTop.addField("Volume", this.getPlayer().getVolume() + " %", true);
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.GREEN);
-            messageEmbedTop.setImage("https://i.pinimg.com/originals/96/e8/7d/96e87de444de56b2c0f7fe8ccb6530fc.jpg");
-            messageEmbedTop.setFooter("Powered by STEM-SYSTEM", null);
+            messageEmbedTop.setImage("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f4a8b53f-5f6b-4a1f-a484-925691f1411a/dazzmko-41abbab2-b4a1-4826-8c76-7ac60472eccc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0YThiNTNmLTVmNmItNGExZi1hNDg0LTkyNTY5MWYxNDExYVwvZGF6em1rby00MWFiYmFiMi1iNGExLTQ4MjYtOGM3Ni03YWM2MDQ3MmVjY2MucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.v7cYmfd71X9QmPqAlPKu6EqB6961L9hFvPfdtLH93xs");
+            messageEmbedTop.setFooter("Powered by MirraAI in STEM Environment", null);
             EvelineBot.getInstance().getJda().getPresence().setActivity(Activity.playing("Nichts :("));
         } else {
             messageEmbedTop.setTitle("EVELINE Music");
