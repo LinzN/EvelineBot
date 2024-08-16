@@ -24,9 +24,7 @@ import de.linzn.evelineBot.utils.InterfaceBuilder;
 import de.linzn.evelineBot.utils.MessageSender;
 import de.linzn.openJL.pairs.Pair;
 import dev.lavalink.youtube.YoutubeAudioSourceManager;
-import dev.lavalink.youtube.clients.AndroidWithThumbnail;
-import dev.lavalink.youtube.clients.MusicWithThumbnail;
-import dev.lavalink.youtube.clients.WebWithThumbnail;
+import dev.lavalink.youtube.clients.*;
 import dev.lavalink.youtube.clients.skeleton.Client;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
@@ -51,7 +49,7 @@ public class MediaManager {
 
     public MediaManager(EvelineBot evelineBot) {
         this.evelineBot = evelineBot;
-        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(/*allowSearch:*/ true, new MusicWithThumbnail(), new WebWithThumbnail(), new AndroidWithThumbnail());
+        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(/*allowSearch:*/ true, new Music(), new Web(), new AndroidTestsuite(), new TvHtml5Embedded());
         myManager.registerSourceManager(youtube);
         AudioSourceManagers.registerRemoteSources(myManager);
     }
