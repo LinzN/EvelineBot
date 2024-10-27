@@ -27,6 +27,7 @@ public class Configuration {
         fileConfiguration.get("commandChannel", "Allgemein");
         fileConfiguration.get("guildId", "xxxxxxx");
         fileConfiguration.get("defaultVolume", 10);
+        fileConfiguration.get("youtubeToken", "xxx");
 
         fileConfiguration.save();
     }

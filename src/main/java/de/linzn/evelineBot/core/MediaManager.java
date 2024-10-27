@@ -26,13 +26,17 @@ import de.linzn.openJL.pairs.Pair;
 import dev.lavalink.youtube.YoutubeAudioSourceManager;
 import dev.lavalink.youtube.clients.*;
 import dev.lavalink.youtube.clients.skeleton.Client;
+import dev.lavalink.youtube.http.YoutubeOauth2Handler;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.MessageBuilder;
 import net.dv8tion.jda.api.entities.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.awt.*;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 
 public class MediaManager {
 
@@ -50,6 +54,7 @@ public class MediaManager {
     public MediaManager(EvelineBot evelineBot) {
         this.evelineBot = evelineBot;
         YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(/*allowSearch:*/ true, new Music(), new Web(), new AndroidTestsuite(), new TvHtml5Embedded());
+        youtube.useOauth2(EvelineBot.getInstance().getConfig().getString("youtubeToken"), true);
         myManager.registerSourceManager(youtube);
         AudioSourceManagers.registerRemoteSources(myManager);
     }
@@ -150,7 +155,7 @@ public class MediaManager {
             messageEmbedTop.addField("Version", EvelineBot.getVersion(), true);
             messageEmbedTop.setColor(Color.GREEN);
             messageEmbedTop.setImage("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/f4a8b53f-5f6b-4a1f-a484-925691f1411a/dazzmko-41abbab2-b4a1-4826-8c76-7ac60472eccc.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2Y0YThiNTNmLTVmNmItNGExZi1hNDg0LTkyNTY5MWYxNDExYVwvZGF6em1rby00MWFiYmFiMi1iNGExLTQ4MjYtOGM3Ni03YWM2MDQ3MmVjY2MucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.v7cYmfd71X9QmPqAlPKu6EqB6961L9hFvPfdtLH93xs");
-            messageEmbedTop.setFooter("Powered by MirraAI in STEM Environment", null);
+            messageEmbedTop.setFooter("Powered by MirraNET in STEM Environment", null);
             EvelineBot.getInstance().getJda().getPresence().setActivity(Activity.playing("Nichts :("));
         } else {
             messageEmbedTop.setTitle("EVELINE Music");
