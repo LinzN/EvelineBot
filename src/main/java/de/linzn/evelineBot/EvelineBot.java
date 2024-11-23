@@ -29,6 +29,7 @@ import java.io.File;
 import java.util.concurrent.Executors;
 
 public class EvelineBot {
+    public int test = 1;
     public static Logger LOGGER;
     public static LogSystem logSystem;
 
