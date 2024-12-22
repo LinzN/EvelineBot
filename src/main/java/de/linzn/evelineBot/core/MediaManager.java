@@ -53,7 +53,7 @@ public class MediaManager {
 
     public MediaManager(EvelineBot evelineBot) {
         this.evelineBot = evelineBot;
-        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(/*allowSearch:*/ true, new Music(), new Web(), new AndroidTestsuite(), new TvHtml5Embedded());
+        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(/*allowSearch:*/ true, new Music(), new Web(), new AndroidVr(), new TvHtml5Embedded());
         youtube.useOauth2(EvelineBot.getInstance().getConfig().getString("youtubeToken"), true);
         myManager.registerSourceManager(youtube);
         AudioSourceManagers.registerRemoteSources(myManager);
