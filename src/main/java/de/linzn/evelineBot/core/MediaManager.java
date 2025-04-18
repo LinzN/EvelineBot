@@ -61,8 +61,8 @@ public class MediaManager {
 
     public void setupManager() {
         this.guild = evelineBot.getJda().getGuildById(evelineBot.getConfig().getString("guildId"));
-        voiceChannel = guild.getVoiceChannelsByName(evelineBot.getConfig().getString("voiceChannel"), true).get(0);
-        textChannel = guild.getTextChannelsByName(evelineBot.getConfig().getString("commandChannel"), true).get(0);
+        voiceChannel = guild.getVoiceChannelById(evelineBot.getConfig().getString("voiceChannel"));
+        textChannel = guild.getTextChannelById(evelineBot.getConfig().getString("commandChannel"));
         AudioPlayer nPlayer = myManager.createPlayer();
         nPlayer.setVolume(evelineBot.getConfig().getInt("defaultVolume"));
         TrackManager manager = new TrackManager(nPlayer, this);
